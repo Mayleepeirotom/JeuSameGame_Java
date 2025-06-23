@@ -1,137 +1,180 @@
 ### VARIABLES ###
 
-JC = javac
-JCFLAGS = -encoding UTF-8 -implicit:none
+JC       = javac
+JCFLAGS  = -encoding UTF-8 -implicit:none
 
-JVM = java
+JVM      = java
 JVMFLAGS = 
 
-### REGLES ESSENTIELLES ###
+### CIBLE PAR DÉFAUT ###
+
+.PHONY: all
+all: Main.class AccueilSameGame.class SameGame.class InitGame.class InitGrille.class \
+     Grille.class SetBloc.class DeplacerBloc.class SupprimerBloc.class TailleGroupe.class \
+     SurvolerGroupe.class SurvolerBloc.class EstGroupeValide.class SupprimerGroupe.class \
+     DetecterEtSupprimerGroupe.class FaireTomberLesBlocs.class DecalerColonnes.class \
+     FinDePartie.class BaseScorePanel.class ScorePanel.class FenetreDeBase.class \
+     ComposantFond.class PanneauBoutonsFinDePartie.class BoutonSamegame.class \
+     BoutonAleatoire.class BoutonChoix.class BoutonQuitterFin.class BoutonRejouerFin.class \
+     ChargerGrilleDepuisFichier.class LireGrilleDepuisFichier.class \
+     GenererGrilleAleatoire.class LancerJeuAleatoire.class \
+     SuperpositionFinDePartie.class AfficherFinDePartie.class \
+     RaffraichirGrille.class GetCouleur.class GrilleBoutonController.class
+
+### RÈGLES ESSENTIELLES ###
 
 Main.class : Main.java AccueilSameGame.class
-	${JC} ${JCFLAGS} Main.java
+	$(JC) $(JCFLAGS) Main.java
 
-AccueilSameGame.class : AccueilSameGame.java FenetreDeBase.class BoutonSamegame.class BoutonAleatoire.class BoutonChoix.class BoutonQuitterFin.class BoutonRejouerFin.class ChargerGrilleDepuisFichier.class LancerJeuAleatoire.class
-	${JC} ${JCFLAGS} AccueilSameGame.java
+AccueilSameGame.class : AccueilSameGame.java FenetreDeBase.class \
+                       BoutonSamegame.class BoutonAleatoire.class \
+                       BoutonChoix.class BoutonRejouerFin.class \
+                       BoutonQuitterFin.class ChargerGrilleDepuisFichier.class \
+                       LancerJeuAleatoire.class
+	$(JC) $(JCFLAGS) AccueilSameGame.java
 
-SameGame.class : SameGame.java Grille.class InitGame.class
-	${JC} ${JCFLAGS} SameGame.java
+SameGame.class : SameGame.java InitGame.class Grille.class
+	$(JC) $(JCFLAGS) SameGame.java
 
-FenetreDeBase.class : FenetreDeBase.java ComposantFond.class
-	${JC} ${JCFLAGS} FenetreDeBase.java
+InitGame.class : InitGame.java FenetreDeBase.class InitGrille.class ScorePanel.class
+	$(JC) $(JCFLAGS) InitGame.java
 
-FenetreFinDePartie.class : FenetreFinDePartie.java FenetreDeBase.class SuperpositionFinDePartie.class
-	${JC} ${JCFLAGS} FenetreFinDePartie.java
-
-ComposantFond.class : ComposantFond.java
-	${JC} ${JCFLAGS} ComposantFond.java
-
-BoutonSamegame.class : BoutonSamegame.java
-	${JC} ${JCFLAGS} BoutonSamegame.java
-
-BoutonAleatoire.class : BoutonAleatoire.java
-	${JC} ${JCFLAGS} BoutonAleatoire.java
-
-BoutonChoix.class : BoutonChoix.java
-	${JC} ${JCFLAGS} BoutonChoix.java
-
-BoutonQuitterFin.class : BoutonQuitterFin.java
-	${JC} ${JCFLAGS} BoutonQuitterFin.java
-
-BoutonRejouerFin.class : BoutonRejouerFin.java
-	${JC} ${JCFLAGS} BoutonRejouerFin.java
-
-ChargerGrilleDepuisFichier.class : ChargerGrilleDepuisFichier.java LireGrilleDepuisFichier.class
-	${JC} ${JCFLAGS} ChargerGrilleDepuisFichier.java
-
-LireGrilleDepuisFichier.class : LireGrilleDepuisFichier.java SetBloc.class Grille.class
-	${JC} ${JCFLAGS} LireGrilleDepuisFichier.java
-
-LancerJeuAleatoire.class : LancerJeuAleatoire.java GenererGrilleAleatoire.class
-	${JC} ${JCFLAGS} LancerJeuAleatoire.java
-
-GenererGrilleAleatoire.class : GenererGrilleAleatoire.java SetBloc.class Grille.class
-	${JC} ${JCFLAGS} GenererGrilleAleatoire.java
-
-SetBloc.class : SetBloc.java Grille.class
-	${JC} ${JCFLAGS} SetBloc.java
+InitGrille.class : InitGrille.java Grille.class ScorePanel.class \
+                   SurvolerBloc.class RaffraichirGrille.class \
+                   GrilleBoutonController.class
+	$(JC) $(JCFLAGS) InitGrille.java
 
 Grille.class : Grille.java
-	${JC} ${JCFLAGS} Grille.java
+	$(JC) $(JCFLAGS) Grille.java
 
-BaseScorePanel.class : BaseScorePanel.java
-	${JC} ${JCFLAGS} BaseScorePanel.java
+SetBloc.class : SetBloc.java Grille.class
+	$(JC) $(JCFLAGS) SetBloc.java
 
-ScorePanel.class : ScorePanel.java BaseScorePanel.class
-	${JC} ${JCFLAGS} ScorePanel.java
-
-InitGame.class : InitGame.java AccueilSameGame.class ScorePanel.class InitGrille.class Grille.class
-	${JC} ${JCFLAGS} InitGame.java
-
-InitGrille.class : InitGrille.java Grille.class ScorePanel.class SurvolerBloc.class
-	${JC} ${JCFLAGS} InitGrille.java
-
-SurvolerBloc.class : SurvolerBloc.java Grille.class SurvolerGroupe.class
-	${JC} ${JCFLAGS} SurvolerBloc.java
-
-SurvolerGroupe.class : SurvolerGroupe.java Grille.class
-	${JC} ${JCFLAGS} SurvolerGroupe.java
-
-TailleGroupe.class : TailleGroupe.java Grille.class
-	${JC} ${JCFLAGS} TailleGroupe.java
-
-EstGroupeValide.class : EstGroupeValide.java Grille.class
-	${JC} ${JCFLAGS} EstGroupeValide.java
-
-SupprimerGroupe.class : SupprimerGroupe.java Grille.class SetBloc.class
-	${JC} ${JCFLAGS} SupprimerGroupe.java
+DeplacerBloc.class : DeplacerBloc.java Grille.class SetBloc.class
+	$(JC) $(JCFLAGS) DeplacerBloc.java
 
 SupprimerBloc.class : SupprimerBloc.java SetBloc.class
-	${JC} ${JCFLAGS} SupprimerBloc.java
+	$(JC) $(JCFLAGS) SupprimerBloc.java
 
-DetecterEtSupprimerGroupe.class : DetecterEtSupprimerGroupe.java Grille.class
-	${JC} ${JCFLAGS} DetecterEtSupprimerGroupe.java
+### LOGIQUE DES GROUPES ###
 
-SuperpositionFinDePartie.class : SuperpositionFinDePartie.java
-	${JC} ${JCFLAGS} SuperpositionFinDePartie.java
+TailleGroupe.class : TailleGroupe.java Grille.class
+	$(JC) $(JCFLAGS) TailleGroupe.java
 
-RaffraichirGrille.class : RaffraichirGrille.java Grille.class SurvolerBloc.class GetCouleur.class
-	${JC} ${JCFLAGS} RaffraichirGrille.java
+SurvolerGroupe.class : SurvolerGroupe.java Grille.class
+	$(JC) $(JCFLAGS) SurvolerGroupe.java
 
-FinDePartie.class : FinDePartie.java Grille.class
-	${JC} ${JCFLAGS} FinDePartie.java
+SurvolerBloc.class : SurvolerBloc.java Grille.class SurvolerGroupe.class
+	$(JC) $(JCFLAGS) SurvolerBloc.java
+
+EstGroupeValide.class : EstGroupeValide.java Grille.class TailleGroupe.class
+	$(JC) $(JCFLAGS) EstGroupeValide.java
+
+SupprimerGroupe.class : SupprimerGroupe.java Grille.class SetBloc.class
+	$(JC) $(JCFLAGS) SupprimerGroupe.java
+
+DetecterEtSupprimerGroupe.class : DetecterEtSupprimerGroupe.java \
+                                  Grille.class SupprimerGroupe.class \
+                                  FaireTomberLesBlocs.class DecalerColonnes.class
+	$(JC) $(JCFLAGS) DetecterEtSupprimerGroupe.java
 
 FaireTomberLesBlocs.class : FaireTomberLesBlocs.java Grille.class DeplacerBloc.class
-	${JC} ${JCFLAGS} FaireTomberLesBlocs.java
+	$(JC) $(JCFLAGS) FaireTomberLesBlocs.java
 
-DeplacerBloc.class : DeplacerBloc.java SetBloc.class Grille.class
-	${JC} ${JCFLAGS} DeplacerBloc.java
+DecalerColonnes.class : DecalerColonnes.java Grille.class DeplacerBloc.class \
+                       SupprimerBloc.class
+	$(JC) $(JCFLAGS) DecalerColonnes.java
 
-DecalerColonnes.class : DecalerColonnes.java Grille.class DeplacerBloc.class SupprimerBloc.class
-	${JC} ${JCFLAGS} DecalerColonnes.java
+FinDePartie.class : FinDePartie.java Grille.class TailleGroupe.class
+	$(JC) $(JCFLAGS) FinDePartie.java
+
+### SCORE ET UI ###
+
+BaseScorePanel.class : BaseScorePanel.java
+	$(JC) $(JCFLAGS) BaseScorePanel.java
+
+ScorePanel.class : ScorePanel.java BaseScorePanel.class
+	$(JC) $(JCFLAGS) ScorePanel.java
+
+FenetreDeBase.class : FenetreDeBase.java ComposantFond.class
+	$(JC) $(JCFLAGS) FenetreDeBase.java
+
+ComposantFond.class : ComposantFond.java
+	$(JC) $(JCFLAGS) ComposantFond.java
+
+PanneauBoutonsFinDePartie.class : PanneauBoutonsFinDePartie.java \
+                                  BoutonRejouerFin.class BoutonQuitterFin.class \
+                                  BoutonSamegame.class
+	$(JC) $(JCFLAGS) PanneauBoutonsFinDePartie.java
+
+BoutonSamegame.class : BoutonSamegame.java
+	$(JC) $(JCFLAGS) BoutonSamegame.java
+
+BoutonAleatoire.class : BoutonAleatoire.java BoutonSamegame.class \
+                        LancerJeuAleatoire.class
+	$(JC) $(JCFLAGS) BoutonAleatoire.java
+
+BoutonChoix.class : BoutonChoix.java BoutonSamegame.class \
+                    ChargerGrilleDepuisFichier.class
+	$(JC) $(JCFLAGS) BoutonChoix.java
+
+BoutonRejouerFin.class : BoutonRejouerFin.java BoutonSamegame.class
+	$(JC) $(JCFLAGS) BoutonRejouerFin.java
+
+BoutonQuitterFin.class : BoutonQuitterFin.java BoutonSamegame.class
+	$(JC) $(JCFLAGS) BoutonQuitterFin.java
+
+### CHARGEMENT ET GÉNÉRATION DE GRILLE ###
+
+LireGrilleDepuisFichier.class : LireGrilleDepuisFichier.java \
+                                Grille.class SetBloc.class
+	$(JC) $(JCFLAGS) LireGrilleDepuisFichier.java
+
+ChargerGrilleDepuisFichier.class : ChargerGrilleDepuisFichier.java \
+                                   LireGrilleDepuisFichier.class SameGame.class
+	$(JC) $(JCFLAGS) ChargerGrilleDepuisFichier.java
+
+GenererGrilleAleatoire.class : GenererGrilleAleatoire.java \
+                              Grille.class SetBloc.class
+	$(JC) $(JCFLAGS) GenererGrilleAleatoire.java
+
+LancerJeuAleatoire.class : LancerJeuAleatoire.java GenererGrilleAleatoire.class
+	$(JC) $(JCFLAGS) LancerJeuAleatoire.java
+
+### FIN DE PARTIE ###
+
+SuperpositionFinDePartie.class : SuperpositionFinDePartie.java \
+                                 PanneauBoutonsFinDePartie.class ComposantFond.class
+	$(JC) $(JCFLAGS) SuperpositionFinDePartie.java
+
+AfficherFinDePartie.class : AfficherFinDePartie.java SuperpositionFinDePartie.class
+	$(JC) $(JCFLAGS) AfficherFinDePartie.java
+
+### RAFRAICHISSEMENT ###
+
+RaffraichirGrille.class : RaffraichirGrille.java Grille.class SurvolerBloc.class GetCouleur.class
+	$(JC) $(JCFLAGS) RaffraichirGrille.java
 
 GetCouleur.class : GetCouleur.java
-	${JC} ${JCFLAGS} GetCouleur.java
+	$(JC) $(JCFLAGS) GetCouleur.java
 
-AfficherFinDePartie.class : AfficherFinDePartie.java
-	${JC} ${JCFLAGS} AfficherFinDePartie.java
+GrilleBoutonController.class : GrilleBoutonController.java Grille.class \
+                               ScorePanel.class RaffraichirGrille.class \
+                               EstGroupeValide.class DetecterEtSupprimerGroupe.class \
+                               FaireTomberLesBlocs.class DecalerColonnes.class \
+                               SurvolerBloc.class AfficherFinDePartie.class
+	$(JC) $(JCFLAGS) GrilleBoutonController.java
 
-PanneauBoutonsFinDePartie.class : PanneauBoutonsFinDePartie.java BoutonSamegame.class
-	${JC} ${JCFLAGS} PanneauBoutonsFinDePartie.java
+### RÈGLES OPTIONNELLES ###
 
-GrilleBoutonController.class : GrilleBoutonController.java Grille.class ScorePanel.class BoutonSamegame.class
-	${JC} ${JCFLAGS} GrilleBoutonController.java
-
-### REGLES OPTIONNELLES ###
-
-run : Main.class
-	${JVM} ${JVMFLAGS} Main
+.PHONY: run clean mrproper
+run : all
+	$(JVM) $(JVMFLAGS) Main
 
 clean :
 	-rm -f *.class
 
-mrproper : clean Main.class
+mrproper : clean
+	-rm -f doc/*
 
-### BUTS FACTICES ###
-
-.PHONY : run clean mrproper
+### FIN ###

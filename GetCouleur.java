@@ -3,14 +3,15 @@ import javax.swing.ImageIcon;
 
 /**
  * La classe <code>GetCouleur</code> fournit une méthode pour obtenir une icône redimensionnée 
- * correspondant à une couleur de bloc, en fonction de sa valeur (1, 2 ou 3).
+ * correspondant à une couleur de bloc, en fonction de sa valeur (1 = rouge, 2 = vert, 3 = bleu).
  *
  * @version 1.0
+ * @author Sarah et Maylee
  */
 public class GetCouleur {
-    /** Largeur d'une cellule. */
+    /** Largeur d'une case. */
     private static final int CELL_WIDTH = 50;
-    /** Hauteur d'une cellule. */
+    /** Hauteur d'une case. */
     private static final int CELL_HEIGHT = 50;
     /** Chemin de l'image pour le bloc rouge. */
     private static final String IMAGE_ROUGE = "images/coquillage.png";
@@ -20,7 +21,7 @@ public class GetCouleur {
     private static final String IMAGE_BLEU  = "images/hibiscus.png";
 
     /**
-     * Retourne une icône redimensionnée correspondant à la valeur du bloc.
+     * Retourne une ImageIcon redimensionnée correspondant à la valeur du bloc.
      *
      * @param c la valeur du bloc (1 = rouge, 2 = vert, 3 = bleu)
      * @return une ImageIcon redimensionnée ou null si la valeur n'est pas reconnue

@@ -1,8 +1,10 @@
 /**
- * La classe <code>DecalerColonnes</code> permet de décaler les colonnes de la grille
- * vers la gauche afin de combler les colonnes vides après suppression des blocs.
- * 
+ * La classe <code>DecalerColonnes</code> gère le réalignement horizontal des blocs
+ * dans la grille de SameGame. Elle déplace toutes les colonnes non vides vers la gauche
+ * pour combler les espaces, puis vide les colonnes restantes à droite.
+ *
  * @version 1.0
+ * @author Sarah et Maylee
  */
 public class DecalerColonnes {
     private static final int LIGNES = Grille.LIGNES;
@@ -10,17 +12,20 @@ public class DecalerColonnes {
     private Grille grille;
     
     /**
-     * Constructeur qui initialise la classe avec la grille de jeu.
+     * Initialise l’outil de décalage de colonnes avec la grille donnée.
      *
-     * @param grille la grille dont les colonnes doivent être décalées
+     * @param grille la grille de jeu dont les colonnes seront réalignées
      */
     public DecalerColonnes(Grille grille) {
         this.grille = grille;
     }
     
     /**
-     * Décale les colonnes de la grille afin de supprimer les espaces vides.
-     * Les colonnes non vides sont décalées vers la gauche et les colonnes restantes sont vidées.
+     * Parcourt les colonnes de gauche à droite :
+     * - si une colonne contient au moins un bloc non vide, elle est déplacée
+     *   vers la première position libre à gauche ;
+     * - après avoir traité toutes les colonnes non vides, les colonnes restantes
+     *   à droite sont vidées (valeur 0).
      */
     public void decalerColonnes() {
         int destination = 0;

@@ -1,8 +1,10 @@
 /**
- * La classe <code>DetecterEtSupprimerGroupe</code> détecte et supprime un groupe de blocs de même couleur
- * à partir d'une position donnée. Après suppression, elle fait tomber les blocs et décale les colonnes.
+ * La classe <code>DetecterEtSupprimerGroupe</code> détecte et supprime un groupe
+ * de blocs connectés de même couleur à partir d'une position donnée, puis
+ * réorganise la grille en faisant tomber les blocs et en décalant les colonnes.
  * 
  * @version 1.0
+ * @author Maylee et Sarah
  */
 public class DetecterEtSupprimerGroupe {
     private static final int LIGNES = Grille.LIGNES;
@@ -10,20 +12,20 @@ public class DetecterEtSupprimerGroupe {
     private Grille grille;
     
     /**
-     * Constructeur qui initialise la classe avec la grille de jeu.
+     * Construit l'outil de détection/suppression pour la grille spécifiée.
      *
-     * @param grille la grille à traiter
+     * @param grille la grille de jeu à traiter
      */
     public DetecterEtSupprimerGroupe(Grille grille) {
         this.grille = grille;
     }
     
     /**
-     * Détecte et supprime le groupe de blocs connectés de même couleur à partir de la position donnée.
-     * Met ensuite à jour la grille en faisant tomber les blocs et en décalant les colonnes.
+     * Détecte le groupe de blocs connectés de même couleur à partir de la cellule
+     * (ligne, colonne), le supprime, puis fait tomber les blocs et décale les colonnes.
      *
-     * @param ligne la ligne de départ du groupe
-     * @param colonne la colonne de départ du groupe
+     * @param ligne   la ligne de la cellule de départ
+     * @param colonne la colonne de la cellule de départ
      */
     public void detecterEtSupprimerGroupe(int ligne, int colonne) {
         int couleur = grille.getBloc(ligne, colonne);

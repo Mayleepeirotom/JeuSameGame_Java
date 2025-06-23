@@ -1,8 +1,10 @@
 /**
  * La classe <code>Grille</code> représente la grille de jeu pour SameGame.
- * La grille est constituée d'un tableau 2D d'entiers où chaque valeur représente un bloc.
+ * La grille est constituée d'un tableau d'entiers où chaque valeur représente un bloc.
+ * Une valeur de 0 indique une cellule vide.
  *
  * @version 1.0
+ * @author Sarah et Maylee
  */
 public class Grille {
     /** Nombre de lignes de la grille. */
@@ -17,17 +19,17 @@ public class Grille {
     int[][] blocs; 
 
     /**
-     * Constructeur qui initialise la grille avec des blocs vides.
+     * Construit une grille vide (tous les blocs initialisés à 0).
      */
     public Grille() {
         blocs = new int[LIGNES][COLONNES];
     }
     
     /**
-     * Retourne la valeur du bloc à la position spécifiée.
+     * Renvoie la valeur du bloc à la position spécifiée.
      *
-     * @param ligne la ligne du bloc
-     * @param colonne la colonne du bloc
+     * @param ligne   l'indice de la ligne du bloc
+     * @param colonne l'indice de la colonne du bloc
      * @return la valeur du bloc à la position (ligne, colonne)
      */
     public int getBloc(int ligne, int colonne) {

@@ -3,10 +3,12 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- * La classe <code>InitGrille</code> initialise la grille de jeu en créant un tableau de boutons interactifs.
- * Chaque cellule est représentée par un JButton qui gère ses propres événements de clic et de survol.
- *
+ * La classe <code>InitGrille</code> initialise la grille de jeu en créant un
+ * tableau de boutons interactifs pour chaque cellule. Elle gère également
+ * les listeners pour le clic et le survol des cellules.
+ * 
  * @version 1.0
+ * @author Sarah et Maylee
  */
 public class InitGrille extends JPanel {
     private static final int LIGNES = Grille.LIGNES;
@@ -17,10 +19,11 @@ public class InitGrille extends JPanel {
     private ScorePanel scorePanel;
 
     /**
-     * Constructeur qui initialise la grille avec la grille de jeu et le panneau de score.
+     * Construit le panneau de grille avec la grille de jeu et le panneau de score.
+     * Initialise le layout en grille (GridLayout) et la taille préférée.
      *
-     * @param grille la grille de jeu
-     * @param scorePanel le panneau de score à mettre à jour
+     * @param grille      la grille de jeu à afficher
+     * @param scorePanel  le panneau de score à mettre à jour lors des actions
      */
     public InitGrille(Grille grille, ScorePanel scorePanel) {
         this.grille = grille;
@@ -34,25 +37,27 @@ public class InitGrille extends JPanel {
     }
 
     /**
-     * Initialise la grille en créant et configurant chaque JButton correspondant à une cellule de la grille.
-     * Ajoute des écouteurs pour gérer les clics et les mouvements de la souris.
+     * Crée chaque JButton pour représenter une cellule de la grille,
+     * associe un GrilleBoutonController pour gérer
+     * les événements de souris, puis rafraîchit l'affichage initial.
      */
     public void initGrille() {
         for (int i = 0; i < LIGNES; i++) {
             for (int j = 0; j < COLONNES; j++) {
                 boutons[i][j] = new JButton();
                 boutons[i][j].setIcon(null);
-    
+
                 // Création et association du contrôleur de la cellule
-                GrilleBoutonController controller = new GrilleBoutonController(grille, scorePanel, boutons, survole, i, j);
+                GrilleBoutonController controller = new GrilleBoutonController(
+                    grille, scorePanel, boutons, survole, i, j
+                );
                 boutons[i][j].addMouseListener(controller);
                 boutons[i][j].addMouseMotionListener(controller);
-    
+
                 add(boutons[i][j]);
             }
         }
         new RaffraichirGrille().rafraichir(boutons, survole, grille);
     }
-    
-    
 }
+

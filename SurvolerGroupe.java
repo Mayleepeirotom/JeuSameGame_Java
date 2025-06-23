@@ -1,8 +1,11 @@
 /**
- * La classe <code>SurvolerGroupe</code> est utilisée pour marquer les cellules d'un groupe de blocs
- * connectés de même couleur lors du survol.
+ * La classe <code>SurvolerGroupe</code> marque dans une matrice les cellules
+ * formant un groupe de blocs connectés de même couleur, à partir d’une cellule donnée.
+ * Elle réalise un parcours récursif pour explorer les voisins et identifie
+ * tous les blocs appartenant au même groupe.
  *
  * @version 1.0
+ * @author Maylee et Sarah
  */
 public class SurvolerGroupe {
     private static final int LIGNES = Grille.LIGNES;
@@ -11,10 +14,11 @@ public class SurvolerGroupe {
     private Grille grille;
     
     /**
-     * Constructeur qui initialise la classe avec la grille et le tableau de survol.
+     * Initialise l’outil de survol de groupe pour la grille spécifiée
+     * et le tableau de marquage des cellules survolées.
      *
-     * @param grille la grille de jeu
-     * @param survole le tableau indiquant les cellules survolées
+     * @param grille la grille de jeu sur laquelle le survol est effectué
+     * @param survole matrice [LIGNES][COLONNES] indiquant les cellules à surligner
      */
     public SurvolerGroupe(Grille grille, boolean[][] survole) {
         this.grille = grille;
@@ -22,16 +26,19 @@ public class SurvolerGroupe {
     }
     
     /**
-     * Marque récursivement les cellules connectées de la même couleur à partir de la position donnée.
+     * Marque récursivement les cellules connectées de la même couleur
+     * que la cellule de départ (ligne, colonne). Chaque cellule visitée
+     * est enregistrée dans <code>visite</code> pour éviter les boucles infinies.
      *
-     * @param ligne la ligne de départ
-     * @param colonne la colonne de départ
-     * @param couleur la couleur à rechercher
-     * @param visite le tableau qui marque les cellules déjà visitées
+     * @param ligne   indice de la ligne de départ (0 ≤ ligne < LIGNES)
+     * @param colonne indice de la colonne de départ (0 ≤ colonne < COLONNES)
+     * @param couleur valeur de la couleur des blocs à survoler
+     * @param visite  matrice [LIGNES][COLONNES] marquant les cellules déjà visitées
      */
     public void survolerGroupe(int ligne, int colonne, int couleur, boolean[][] visite) {
-        if (ligne < 0 || ligne >= LIGNES || colonne < 0 || colonne >= COLONNES || visite[ligne][colonne])
+        if (ligne < 0 || ligne >= LIGNES || colonne < 0 || colonne >= COLONNES || visite[ligne][colonne]) {
             return;
+        }
         if (grille.getBloc(ligne, colonne) == couleur) {
             survole[ligne][colonne] = true;
             visite[ligne][colonne] = true;

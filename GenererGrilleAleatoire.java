@@ -1,14 +1,16 @@
 import java.util.Random;
 
 /**
- * La classe <code>GenererGrilleAleatoire</code> génère une grille de jeu remplie de blocs de manière aléatoire.
- *
+ * La classe <code>GenererGrilleAleatoire</code> remplit la grille de blocs
+ * de manière aléatoire ou crée une nouvelle grille initialisée aléatoirement.
+ * 
  * @version 1.0
+ * @author Sarah et Maylee
  */
 public class GenererGrilleAleatoire {
     
     /**
-     * Remplit la grille avec des valeurs aléatoires correspondant à différents types de blocs.
+     * Remplit la grille avec des valeurs aléatoires (1 = rouge, 2 = vert, 3 = bleu).
      *
      * @param grille la grille de jeu à remplir
      */
@@ -24,9 +26,9 @@ public class GenererGrilleAleatoire {
     }
     
     /**
-     * Crée une nouvelle grille de jeu remplie aléatoirement.
+     * Crée une nouvelle instance de Grille remplie de blocs aléatoires.
      *
-     * @return une instance de Grille initialisée de façon aléatoire
+     * @return une nouvelle grille initialisée aléatoirement
      */
     public static Grille creerGrilleAleatoire() {
         Grille grille = new Grille();

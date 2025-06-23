@@ -1,19 +1,22 @@
 import javax.swing.*;
 
 /**
- * La classe <code>ChargerGrilleDepuisFichier</code> permet de charger une grille de jeu à partir d'un fichier.
- * Elle ouvre un JFileChooser pour que l'utilisateur sélectionne le fichier contenant la grille,
- * lit son contenu et, si la grille est correctement lue, démarre une nouvelle partie.
+ * La classe <code>ChargerGrilleDepuisFichier</code> permet de sélectionner et charger
+ * une grille de jeu depuis un fichier choisi par l'utilisateur via un JFileChooser.
+ * Si la lecture est réussie, elle démarre une nouvelle partie de SameGame avec cette grille.
  * 
  * @version 1.0
+ * @author Sarah et Maylee
  */
 public class ChargerGrilleDepuisFichier {
     
     /**
-     * Charge la grille depuis le fichier sélectionné et démarre une nouvelle instance de SameGame.
+     * Ouvre la boîte de dialogue pour choisir un fichier de grille, lit son contenu
+     * pour créer une instance de Grille et, si tout se passe bien,
+     * lance une nouvelle partie et ferme la fenêtre d'accueil.
      *
-     * @param parent la fenêtre parente appelante
-     * @param fileChooser le sélecteur de fichier utilisé pour choisir la grille
+     * @param parent      la fenêtre d'accueil appelante
+     * @param fileChooser l'instance de JFileChooser utilisée pour la sélection du fichier
      */
     public static void chargerGrilleDepuisFichier(AccueilSameGame parent, JFileChooser fileChooser) {
         int retour = fileChooser.showOpenDialog(parent);

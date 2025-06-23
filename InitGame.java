@@ -3,18 +3,19 @@ import java.awt.*;
 
 /**
  * La classe <code>InitGame</code> initialise et affiche la fenêtre principale du jeu SameGame.
- * Elle instancie la grille, le panneau de score et la zone centrale de jeu.
- *
+ * Elle crée la grille, le panneau de score et le panneau de jeu central.
+ * 
  * @version 1.0
+ * @author Maylee et Sarah
  */
 public class InitGame extends FenetreDeBase {
     private Grille grille;
     private ScorePanel scorePanel;
 
     /**
-     * Constructeur qui crée la fenêtre principale du jeu avec la grille spécifiée.
+     * Construit la fenêtre de jeu avec la grille spécifiée.
      *
-     * @param grille la grille de jeu à utiliser
+     * @param grille la grille de jeu à utiliser pour démarrer la partie
      */
     public InitGame(Grille grille) {
         super("SameGame", "images/backgroundacc.jpg", 800, 600);
@@ -31,9 +32,9 @@ public class InitGame extends FenetreDeBase {
     }
 
     /**
-     * Renvoie le panneau de score associé à la fenêtre.
+     * Renvoie le panneau de score associé à cette fenêtre de jeu.
      *
-     * @return le ScorePanel utilisé dans la fenêtre de jeu
+     * @return le ScorePanel utilisé dans la partie
      */
     public ScorePanel getScorePanel() {
         return scorePanel;

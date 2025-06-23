@@ -6,7 +6,15 @@ import javax.swing.JFrame;
 import javax.swing.SwingUtilities;
 import javax.swing.*;
 
-
+/**
+ * La classe <code>GrilleBoutonController</code> gere les interactions de l utilisateur
+ * avec la grille de jeu via des evenements de souris, pour cliquer et survoler une case.
+ * Elle met a jour le score, supprime les groupes, effectue la chute des blocs,
+ * decale les colonnes et affiche l ecran de fin de partie si necessaire.
+ * 
+ * @version 1.0
+ * @author Maylee et Sarah
+ */
 public class GrilleBoutonController implements MouseListener, MouseMotionListener {
 
     private Grille grille;
@@ -16,6 +24,16 @@ public class GrilleBoutonController implements MouseListener, MouseMotionListene
     private int ligne;
     private int colonne;
     
+    /**
+     * Construit un contrôleur pour une cellule precise de la grille.
+     *
+     * @param grille     la grille de jeu
+     * @param scorePanel le panneau Swing qui affiche le score
+     * @param boutons    matrice de boutons qui represente les cases
+     * @param survole    matrice de booleens indiquant l etat de survol des cases
+     * @param ligne      indice de la ligne de la cellule contrôlee
+     * @param colonne    indice de la colonne de la cellule contrôlee
+     */
     public GrilleBoutonController(Grille grille, ScorePanel scorePanel, JButton[][] boutons, boolean[][] survole, int ligne, int colonne) {
         this.grille = grille;
         this.scorePanel = scorePanel;
@@ -25,9 +43,19 @@ public class GrilleBoutonController implements MouseListener, MouseMotionListene
         this.colonne = colonne;
     }
     
+    /**
+     * Traite le clic sur la cellule contrôlee :
+     * - calcule la taille du groupe selectionne,
+     * - met a jour le score,
+     * - supprime le groupe,
+     * - fait tomber les blocs et decale les colonnes,
+     * - rafraîchit l affichage,
+     * - verifie la fin de partie et affiche l ecran de fin si necessaire.
+     *
+     * @param e l evenement de souris correspondant au clic
+     */
     @Override
     public void mouseClicked(MouseEvent e) {
-        // Traitement du clic sur une cellule de la grille
         if (grille.getBloc(ligne, colonne) != 0) {
             EstGroupeValide ev = new EstGroupeValide(grille);
             if (ev.estGroupeValide(ligne, colonne)) {
@@ -53,27 +81,41 @@ public class GrilleBoutonController implements MouseListener, MouseMotionListene
         }
     }
 
+    /**
+     * Traite le survol de la case contrôlee :
+     * - marque le groupe sous la souris,
+     * - rafraîchit l affichage pour afficher la bordure de survol.
+     *
+     * @param e l evenement de mouvement de souris
+     */
     @Override
     public void mouseMoved(MouseEvent e) {
-        // Traitement pour le survol de la cellule
         new SurvolerBloc(grille, survole).survolerBloc(ligne, colonne);
         new RaffraichirGrille().rafraichir(boutons, survole, grille);
     }
     
-    // Les autres méthodes de l'interface sont vides ou peuvent être complétées si nécessaire
-    @Override public void mousePressed(MouseEvent e) {
+    /** Pas utilise. */
+    @Override public void mousePressed(MouseEvent e) { 
 
     }
+
+    /** pas utilise. */
     @Override public void mouseReleased(MouseEvent e) {
 
-    }
-    @Override public void mouseEntered(MouseEvent e) {
+     }
+
+    /** pas utilise. */
+    @Override public void mouseEntered(MouseEvent e) { 
 
     }
+
+    /** pas utilise. */
     @Override public void mouseExited(MouseEvent e) {
-
+        
     }
-    @Override public void mouseDragged(MouseEvent e) {
+
+    /** pas utilise. */
+    @Override public void mouseDragged(MouseEvent e) { 
         
     }
 }

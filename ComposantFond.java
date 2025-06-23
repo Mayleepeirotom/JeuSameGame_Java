@@ -4,30 +4,32 @@ import java.awt.Image;
 import javax.swing.ImageIcon;
 
 /**
- * La classe <code>ComposantFond</code> est un composant graphique permettant d'afficher une image
- * de fond redimensionnée pour occuper toute la surface du composant.
+ * La classe <code>ComposantFond</code> est un composant Swing personnalise
+ * capable d afficher une image de fond redimensionnee pour couvrir entierement
+ * sa zone d affichage.
  * 
  * @version 1.0
+ * @author Maylee et Sarah
  */
 public class ComposantFond extends JComponent {
-    /**
-     * L'image de fond à afficher.
-     */
+
+    /** Image de fond. */
     private Image imageDeFond;
 
     /**
-     * Constructeur qui charge l'image de fond à partir du chemin spécifié.
+     * Construit un composant avec l image de fond specifiee.
      *
-     * @param cheminImage le chemin de l'image de fond
+     * @param cheminImage chemin vers le fichier image a utiliser comme fond
      */
     public ComposantFond(String cheminImage) {
         imageDeFond = new ImageIcon(cheminImage).getImage();
     }
 
     /**
-     * Surcharge de la méthode <code>paintComponent</code> pour dessiner l'image de fond redimensionnée.
+     * Surcharge de la methode paintComponent pour dessiner l image
+     * de fond redimensionnee a la taille actuelle du composant.
      *
-     * @param g le contexte graphique
+     * @param g le contexte graphique utilise pour le rendu
      */
     @Override
     protected void paintComponent(Graphics g) {

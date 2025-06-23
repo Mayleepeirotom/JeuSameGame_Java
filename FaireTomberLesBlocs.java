@@ -1,8 +1,9 @@
 /**
  * La classe <code>FaireTomberLesBlocs</code> fait tomber les blocs dans la grille après la suppression
- * d'un groupe de blocs. Elle permet ainsi de remplir les espaces vides.
- *
+ * d'un groupe de blocs. Elle permet donc de remplir les espaces vides.
+ * 
  * @version 1.0
+ * @author Maylee et Sarah
  */
 public class FaireTomberLesBlocs {
     private static final int LIGNES = Grille.LIGNES;

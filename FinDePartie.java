@@ -1,14 +1,16 @@
 /**
- * La classe <code>FinDePartie</code> vérifie les conditions de fin de partie 
- * en s'assurant qu'aucun groupe de blocs connectés n'est disponible dans la grille.
- *
+ * La classe <code>FinDePartie</code> vérifie si la partie est terminée en
+ * recherchant l'absence de tout groupe de blocs de même couleur d'au moins
+ * deux éléments dans la grille.
+ * 
  * @version 1.0
+ * @author Sarah et Maylee
  */
 public class FinDePartie {
     private boolean partieTerminee = false;
     
     /**
-     * Indique si la partie est terminée.
+     * Indique si la partie a été détectée comme terminée.
      *
      * @return true si la partie est terminée, false sinon
      */
@@ -17,10 +19,11 @@ public class FinDePartie {
     }
     
     /**
-     * Vérifie la fin de partie en testant l'existence de groupes de blocs dans la grille.
+     * Analyse la grille pour déterminer si aucun groupe valide n'existe.
+     * Met à jour l'état interne et renvoie le résultat.
      *
-     * @param grille la grille de jeu
-     * @return true si la partie est terminée (aucun groupe n'existe), false sinon
+     * @param grille la grille de jeu à vérifier
+     * @return true si la partie est terminée (aucun groupe), false sinon
      */
     public boolean verifierFinDePartie(Grille grille) {
         if (!existeGroupe(grille)) {
@@ -30,10 +33,11 @@ public class FinDePartie {
     }
     
     /**
-     * Vérifie s'il existe un groupe de blocs connectés dans la grille.
+     * Parcourt la grille pour rechercher un groupe de blocs connectés
+     * de même couleur d'au moins deux cases.
      *
-     * @param grille la grille de jeu
-     * @return true si un groupe est trouvé, false sinon
+     * @param grille la grille à inspecter
+     * @return true si un tel groupe est trouvé, false sinon
      */
     private boolean existeGroupe(Grille grille) {
         int LIGNES = Grille.LIGNES;
@@ -54,14 +58,15 @@ public class FinDePartie {
     }
     
     /**
-     * Calcule la taille d'un groupe de blocs connectés de même couleur à partir de la position donnée.
+     * Calcule la taille d'un groupe de blocs connectés de même couleur
+     * à partir d'une position donnée.
      *
-     * @param i la ligne de départ
-     * @param j la colonne de départ
-     * @param bloc la valeur du bloc à rechercher
-     * @param visite tableau indiquant les cellules déjà visitées
+     * @param i      la ligne de départ
+     * @param j      la colonne de départ
+     * @param bloc   la valeur de bloc à rechercher
+     * @param visite matrice marquant les cellules déjà visitées
      * @param grille la grille de jeu
-     * @return le nombre de blocs connectés dans le groupe
+     * @return le nombre de blocs connectés trouvés
      */
     private int tailleGroupe(int i, int j, int bloc, boolean[][] visite, Grille grille) {
         int LIGNES = Grille.LIGNES;

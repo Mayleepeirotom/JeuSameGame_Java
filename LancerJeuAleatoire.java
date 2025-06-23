@@ -1,12 +1,15 @@
 /**
- * La classe <code>LancerJeuAleatoire</code> lance une nouvelle partie avec une grille générée aléatoirement.
- *
+ * La classe <code>LancerJeuAleatoire</code> lance une nouvelle partie
+ * avec une grille générée aléatoirement.
+ * 
  * @version 1.0
+ * @author Maylee et Sarah
  */
 public class LancerJeuAleatoire {
-    
+
     /**
-     * Crée une grille aléatoire, démarre une nouvelle partie et ferme la fenêtre d'accueil.
+     * Crée une grille aléatoire, démarre une nouvelle partie et ferme
+     * la fenêtre d'accueil.
      *
      * @param parent l'instance d'AccueilSameGame à fermer
      */
@@ -16,3 +19,4 @@ public class LancerJeuAleatoire {
         parent.dispose();
     }
 }
+
